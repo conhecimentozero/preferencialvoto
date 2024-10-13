@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  # Job para construir o projeto
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Faz o checkout do repositório
+      - uses: actions/checkout@v4
+
+      # Configura o Node.js para o front-end e serviços blockchain
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Instala as dependências do projeto
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Executa testes unitários para garantir a integridade do código
+      - name: Run tests
+        run: |
+          npm test
+
+  # Job para lidar com a configuração e validação do chaincode
+  chaincode:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout do repositório
+      - uses: actions/checkout@v4
+
+      # Instala o Hyperledger Fabric e Docker
+      - name: Install Hyperledger Fabric
+        run: |
+          curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.2.0 1.4.9 0.4.22
+          sudo apt-get install docker-compose
+
+      # Inicializa a rede local para testes
+      - name: Start Fabric Network
+        run: |
+          cd fabric-samples/test-network
+          ./network.sh up createChannel -ca
+
+      # Instala e instância o chaincode do STV
+      - name: Deploy Chaincode
+        run: |
+          cd fabric-samples/test-network
+          ./network.sh deployCC -ccn stvvote -ccp ../chaincode/stvvote -ccl go
+
+      # Executa testes de integração com o chaincode
+      - name: Run Chaincode Tests
+        run: |
+          cd fabric-samples/test-network
+          ./testChaincode.sh
+
+  # Job para lidar com o front-end da aplicação
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Instala as dependências e executa o build do front-end
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+      # Executa testes no front-end
+      - name: Run Frontend Tests
+        run: |
+          cd frontend
+          npm test
