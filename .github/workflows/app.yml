@@ -50,11 +50,11 @@ jobs:
           cd fabric-samples/test-network
           ./network.sh up createChannel -ca
 
-      # Instala e instância o chaincode do STV
+      # Instala e instância o chaincode do PreferencialVoto (antigo STVVote)
       - name: Deploy Chaincode
         run: |
           cd fabric-samples/test-network
-          ./network.sh deployCC -ccn stvvote -ccp ../chaincode/stvvote -ccl go
+          ./network.sh deployCC -ccn preferencialvoto -ccp ../chaincode/preferencialvoto -ccl go
 
       # Executa testes de integração com o chaincode
       - name: Run Chaincode Tests
@@ -67,6 +67,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Verifica se o diretório frontend existe antes de executar comandos
+      - name: Check if Frontend Directory Exists
+        run: |
+          if [ ! -d "frontend" ]; then
+            echo "Frontend directory does not exist. Skipping frontend build."
+            exit 1
+          fi
 
       # Instala as dependências e executa o build do front-end
       - name: Build Frontend
