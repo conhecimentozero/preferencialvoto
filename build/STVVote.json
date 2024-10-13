@@ -1,0 +1,107 @@
+{
+  "contractName": "STVVote",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string[]",
+          "name": "_candidates",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string[]",
+          "name": "preferences",
+          "type": "string[]"
+        }
+      ],
+      "name": "Voted",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "getCandidates",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_voter",
+          "type": "address"
+        }
+      ],
+      "name": "getVoterPreferences",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string[]",
+          "name": "_preferences",
+          "type": "string[]"
+        }
+      ],
+      "name": "vote",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "countVotes",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "winners",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506040516101e83803806101e88339818101604052602081101561003357600080fd5b810190808051604051939291908464010000000082111561005057600080fd5b8382019150602082018581111561006657600080fd5b825186600182016040528015610079576020820181803683370190505b509150600090505b6000805490508091505090565b6101c78061009d6000396000f3fe6080604052600436106100485760003560e01c806365d9e7261461004d57806370a0823114610076578063a9059cbb146100a15761004b565b3661004b57005b600080fd5b34801561005957600080fd5b506100626100cb565b6040518082815260200191505060405180910390f35b34801561008257600080fd5b5061008b6100e3565b6040518082815260200191505060405180910390f35b3480156100ad57600080fd5b506100b66100f2565b6040518082815260200191505060405180910390f35b60008080549050905090565b60008080549050905090565b60005481565b60008080549050905090565b60005481565056fea2646970667358221220f9d1bc5a1d1f6f0e8c4e8e4d282a9a7a201a51e9c1c8d3c4ed9d635b1d5e5a8d64736f6c63430008000033"
+}
