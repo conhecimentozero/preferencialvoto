@@ -22,7 +22,7 @@ A aplicação front-end é construída utilizando **React**. O principal compone
 
 O back-end é implementado utilizando **Solidity** para os contratos inteligentes, que são implantados em uma rede Ethereum. O serviço de blockchain é abstraído no `BlockchainService`, responsável por interagir com a blockchain, carregar dados e registrar votos.
 
-- **BlockchainService**: Este serviço carrega os dados da blockchain, como a conta do usuário e a lista de candidatas, e permite o registro dos votos [[4]](https://poe.com/citation?message_id=269495381624&citation=4).
+- **BlockchainService**: Este serviço carrega os dados da blockchain, como a conta do usuário e a lista de candidatas, e permite o registro dos votos.
 - **Contrato Inteligente**: O contrato inteligente `PreferencialVoto` é responsável por armazenar os dados da eleição, como os votos e os candidatos, e processar o resultado final com base no método STV.
 
 ### Configuração do Projeto
