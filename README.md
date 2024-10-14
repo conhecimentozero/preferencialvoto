@@ -16,18 +16,18 @@ Este projeto consiste em um sistema de votação baseado no método de Voto Úni
 A aplicação front-end é construída utilizando **React**. O principal componente é o `STVVoteFrontEnd`, que gerencia o estado e a interação do usuário. Ele se comunica com o serviço de blockchain para carregar dados e registrar os votos dos eleitores.
 
 - **Gerenciamento de Estado**: O estado dos candidatos e da conta do usuário é gerenciado utilizando hooks do React (`useState`, `useEffect`).
-- **Componentes Separados**: A lista de candidatos é renderizada através de um componente separado chamado `CandidateList`, promovendo a segregação de responsabilidades (SRP) [[6]](https://poe.com/citation?message_id=269495381624&citation=6).
+- **Componentes Separados**: A lista de candidatos é renderizada através de um componente separado chamado `CandidateList`, promovendo a segregação de responsabilidades (SRP).
 
 ### Back-End (Blockchain)
 
 O back-end é implementado utilizando **Solidity** para os contratos inteligentes, que são implantados em uma rede Ethereum. O serviço de blockchain é abstraído no `BlockchainService`, responsável por interagir com a blockchain, carregar dados e registrar votos.
 
 - **BlockchainService**: Este serviço carrega os dados da blockchain, como a conta do usuário e a lista de candidatas, e permite o registro dos votos [[4]](https://poe.com/citation?message_id=269495381624&citation=4).
-- **Contrato Inteligente**: O contrato inteligente `STVVote` é responsável por armazenar os dados da eleição, como os votos e os candidatos, e processar o resultado final com base no método STV [[5]](https://poe.com/citation?message_id=269495381624&citation=5).
+- **Contrato Inteligente**: O contrato inteligente `PreferencialVoto` é responsável por armazenar os dados da eleição, como os votos e os candidatos, e processar o resultado final com base no método STV.
 
 ### Configuração do Projeto
 
-O compilador Solidity utilizado é a versão 0.8.0, com otimizações habilitadas para garantir a eficiência do contrato inteligente [[5]](https://poe.com/citation?message_id=269495381624&citation=5).
+O compilador Solidity utilizado é a versão 0.8.0, com otimizações habilitadas para garantir a eficiência do contrato inteligente.
 
 ## Instalação
 
@@ -71,7 +71,7 @@ O compilador Solidity utilizado é a versão 0.8.0, com otimizações habilitada
 
 1. **Conectar à Blockchain**: Ao carregar a aplicação, ela tentará se conectar automaticamente à blockchain utilizando o MetaMask.
 2. **Seleção de Candidatos**: Os eleitores podem visualizar a lista de candidatos disponíveis e selecionar suas preferências.
-3. **Registrar Voto**: Os eleitores submetem suas preferências, que são registradas na blockchain através do contrato inteligente [[6]](https://poe.com/citation?message_id=269495381624&citation=6)[[4]](https://poe.com/citation?message_id=269495381624&citation=4).
+3. **Registrar Voto**: Os eleitores submetem suas preferências, que são registradas na blockchain através do contrato inteligente.
 
 ## Testes
 
@@ -82,7 +82,7 @@ O projeto inclui scripts de teste para garantir o correto funcionamento dos cont
    truffle test
    ```
 
-Os testes são configurados para rodar com um timeout de 100.000 milissegundos, garantindo que os processos de validação e prova de conhecimento zero tenham tempo suficiente para completar [[5]](https://poe.com/citation?message_id=269495381624&citation=5).
+Os testes são configurados para rodar com um timeout de 100.000 milissegundos, garantindo que os processos de validação e prova de conhecimento zero tenham tempo suficiente para completar.
 
 ## Contribuição
 
@@ -96,4 +96,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 
 ## Licença
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Este projeto está licenciado sob a [MIT License].
